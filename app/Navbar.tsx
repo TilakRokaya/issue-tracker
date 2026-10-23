@@ -13,7 +13,7 @@ const currentpath=usePathname();
     ]
   
     return(
-    <nav className="flex space-x-5 border-2 my-2 mx-2 px-5 h-10 items-center">
+    <nav className="flex space-x-5 border-2 mb-4 px-7 h-14 items-center">
         <Link href='/'>logo</Link>
         <ul className="flex space-x-4">
             {link.map((links)=>

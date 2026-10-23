@@ -1,7 +1,16 @@
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+
 export default function Issuepage(){
     return(
-        <>
-        <div>issuepage</div>
-        </>
+       
+        <Button>
+            <Link href="/issues/new">
+                Report Issue
+            </Link>
+        </Button>
+            
+        
     );
 }
