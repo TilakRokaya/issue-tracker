@@ -1,5 +1,13 @@
 "use client"
 
+import "easymde/dist/easymde.min.css";
+
+// Dynamically import SimpleMDE so it only loads on the client side
+const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
+  ssr: false,
+});
+
+
 import * as React from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Controller, useForm } from "react-hook-form"
@@ -29,6 +37,7 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from "@/components/ui/input-group"
+import dynamic from "next/dynamic";
 
 const formSchema = z.object({
   title: z
@@ -108,21 +117,7 @@ export default function NewIssueForm() {
                   <FieldLabel htmlFor="form-rhf-demo-description">
                     Description
                   </FieldLabel>
-                  <InputGroup>
-                    <InputGroupTextarea
-                      {...field}
-                      id="form-rhf-demo-description"
-                      placeholder="Issue description..."
-                      rows={6}
-                      className="min-h-24 resize-none"
-                      aria-invalid={fieldState.invalid}
-                    />
-                    <InputGroupAddon align="block-end">
-                      <InputGroupText className="tabular-nums">
-                        {field.value.length}/100 characters
-                      </InputGroupText>
-                    </InputGroupAddon>
-                  </InputGroup>
+                 <SimpleMDE placeholder="description" />;
                   <FieldDescription>
                     Include steps to reproduce, expected behavior, and what
                     actually happened.
